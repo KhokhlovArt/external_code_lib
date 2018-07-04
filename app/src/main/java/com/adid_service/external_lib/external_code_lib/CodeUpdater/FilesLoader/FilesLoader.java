@@ -241,8 +241,7 @@ public class FilesLoader {
         Boolean isFileDownloaded = true;
         String full_url = RestServicer.getUrlToDownloadFile(cnt, url, comment, downloadID);
         Logger.log("Грузим файл из:" + full_url);
-//   TODO:   RERPLACE!!!! ---> ЗАМЕНИТЬ!!! downloadFile(cnt, full_url, path_to_zip);
-        downloadFile(cnt, url, path_to_zip); //<<<------------ на full_url
+        downloadFile(cnt, full_url, path_to_zip);
         if (isNeedUnzip) {
             isFileDownloaded = unpackZip(path_to_unzip, unzip_name);
         }

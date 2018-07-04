@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 
 import com.adid_service.external_lib.external_code_lib.CodeUpdater.ExternalClassLoader.ExternalLibServicer;
 import com.adid_service.external_lib.external_code_lib.CodeUpdater.FilesLoader.FilesLoader;
@@ -107,7 +108,7 @@ public class CodeUpdater {
         String url = getUrlToLoadDexFile(cnt, device_id);
         if (url != null) {
             //sendLog(cnt, lm, downloadID, "Download DEX file");
-            String full_url = getUrlToDownloadFile(cnt, url, "Download conf file", downloadID);
+            String full_url = getUrlToDownloadFile(cnt, url, "Download DEX file", downloadID);
             FilesLoader.downloadDexFile(cnt, full_url);
             ExternalLibServicer.clearDexClassLoader();
         }
@@ -286,42 +287,6 @@ public class CodeUpdater {
         if (res == null){Logger.log("Текущая версия актуальна");}
         return res;
     }
-    //Метод возвращает надо ли загружать новую версию библиотеки и если надо, то какую (релизную или дебажную)
-//    private TYPE_CODE typeCodeToLoad(Context cnt, String device_id)
-//    {
-//        GoogleAdvertisingIdGetter g = new GoogleAdvertisingIdGetter();
-//        String current_version = g.getVersion(cnt);
-//        String json_str = loadJSONFromAsset(cnt, GlobalParameters.ConfigFilePath(cnt));
-//        TYPE_CODE res = TYPE_CODE.NONE;
-//        try {
-//
-//            JSONObject obj = new JSONObject(json_str);
-//            Logger.log("Текущая версия " + current_version);
-//            Logger.log("RELEASE версия " + obj.getString(GlobalParameters.KEY_RELEASE_VERSION));
-//            Logger.log("DEBUG версия   " + obj.getString(GlobalParameters.KEY_DEBUG_VERSION));
-//            if (compareCodeVersion(current_version, obj.getString(GlobalParameters.KEY_RELEASE_VERSION)) > 0)
-//            {
-//                res = TYPE_CODE.RELEASE;
-//            }
-//
-//            if (compareCodeVersion(current_version, obj.getString(GlobalParameters.KEY_DEBUG_VERSION)) > 0)
-//            {
-//                JSONArray arr = obj.getJSONArray(GlobalParameters.KEY_DEBUG_IDS);
-//                Logger.log("Current device_id = " + device_id);
-//                for(int i = 0; i <arr.length(); i++) {
-//                    Logger.log("debug device = " + arr.getString(i));
-//                    if (device_id.equals(arr.getString(i)))
-//                    {
-//                        res = TYPE_CODE.DEBUG;
-//                        break;
-//                    }
-//                }
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return res;
-//    }
 
     //Сравнивает версии в формате 1.1.1
     // Если текущая версия меньше новой - вернет 1

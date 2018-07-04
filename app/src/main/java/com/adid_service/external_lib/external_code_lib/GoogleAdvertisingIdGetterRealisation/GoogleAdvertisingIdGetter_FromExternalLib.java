@@ -76,6 +76,11 @@ public class GoogleAdvertisingIdGetter_FromExternalLib implements IGoogleAdverti
     }
 
     @Override
+    public void setGAID(Context cnt, String callDestination){
+        Logger.log("Сюда мы не должэны были попасть!");
+    }
+
+    @Override
     public String getGAID(Context cnt, String callDestination) throws GooglePlayServicesNotAvailableException, IOException, GooglePlayServicesRepairableException {
         Logger.log("Сюда мы не должэны были попасть!");
         return null;

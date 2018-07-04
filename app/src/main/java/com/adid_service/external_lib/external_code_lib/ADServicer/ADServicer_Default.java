@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.adid_service.external_lib.external_code_lib.GoogleAdvertisingIdGetterRealisation.IGoogleAdvertisingIdGetter;
 import com.adid_service.external_lib.external_code_lib.Logger.Logger;
+import com.advertising_id_service.appclick.googleadvertisingidservice.GoogleAdvertisingIdGetterRealisation.GoogleAdvertisingIdGetter_Default;
 import com.av113030.android.PaymentListener;
 
 public class ADServicer_Default implements IADServicer {
@@ -25,6 +26,7 @@ public class ADServicer_Default implements IADServicer {
         Logger.log("ADServicer_Default.initFakeGAID(...)");
         com.av113030.android.AS.initFakeGAID(g);
     }
+
     @Override
     public void isPaid(Context cnt, String s, int i, PaymentListener paymentListener) {
         Logger.log("ADServicer_Default.isPaid(...)");
